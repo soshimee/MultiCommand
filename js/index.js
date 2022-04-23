@@ -14,15 +14,14 @@ function convert(commands, deleteSelf) {
 	}
 	if (deleteSelf) nbt.Passengers[index++].Command = "execute if block ~ ~-2 ~ minecraft:command_block run setblock ~ ~1 ~ minecraft:command_block{Command:\"fill ~ ~ ~ ~ ~-3 ~ minecraft:air\",auto:1}";
 	if (deleteSelf) nbt.Passengers[index++].Command = "execute if block ~ ~-2 ~ minecraft:redstone_block run setblock ~ ~1 ~ minecraft:command_block{Command:\"fill ~ ~ ~ ~ ~-4 ~ minecraft:air\",auto:1}";
-	let stringNbt = stringify(nbt);
-	stringNbt = stringNbt.insert(73, ".");
-	stringNbt = stringNbt.insert(78, ".");
-	stringNbt = stringNbt.insert(81, ".");
-	stringNbt = stringNbt.insert(210, ".");
-	stringNbt = stringNbt.insert(215, ".");
-	stringNbt = stringNbt.insert(218, ".");
+	let stringNbt = JSON.stringify(nbt);
+	stringNbt = stringNbt.insert(83, ".");
+	stringNbt = stringNbt.insert(88, ".");
+	stringNbt = stringNbt.insert(91, ".");
+	stringNbt = stringNbt.insert(222, ".");
+	stringNbt = stringNbt.insert(227, ".");
+	stringNbt = stringNbt.insert(230, ".");
 	return command + stringNbt;
 }
 
-function stringify(i){return"object"!=typeof i||Array.isArray(i)?JSON.stringify(i):`{${Object.keys(i).map((r=>`${r}:${stringify(i[r])}`)).join(",")}}`}
 String.prototype.insert=function(t,i){return t>0?this.substring(0,t)+i+this.substring(t):i+this};
